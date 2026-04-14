@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- 1. Ajout de COARSE_LOCATION et ignore pour MockLocation -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FakeLocation">
+
+        <!-- 2. Le service doit être ICI, dans <application> -->
+        <service android:name=".MockLocationService"
+            android:foregroundServiceType="location"
+            android:exported="false"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -18,7 +30,6 @@
             android:theme="@style/Theme.FakeLocation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
