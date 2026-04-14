@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             FakeLocationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Medy",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
